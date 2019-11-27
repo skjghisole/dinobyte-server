@@ -2,6 +2,8 @@ import { UserType, CredentialType, AddressType, AddressInputType, CredentialInpu
 import { ImageType, InputImageType } from './Image'
 import { DocumentCountType } from './DocumentCount'
 
+import PostType from './Post';
+
 export {
 	CredentialType,
 	CredentialInputType,
@@ -14,4 +16,6 @@ export {
 
 	AddressType,
 	AddressInputType,
+
+	PostType
 }
