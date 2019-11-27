@@ -1,6 +1,6 @@
 import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } from 'graphql'
 
-import { ImageType } from '../'
+import { ImageType } from './'
 
 const PostType = new GraphQLObjectType({
 	name: 'Post',
