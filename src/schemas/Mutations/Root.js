@@ -4,10 +4,12 @@ import {
 
 import {
 	UserMutations,
+	PostMutations
 } from './'
 
 const fields = {
 	...UserMutations,
+	...PostMutations
 }
 
 const MutationType = new GraphQLObjectType({
