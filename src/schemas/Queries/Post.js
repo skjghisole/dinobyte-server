@@ -1,11 +1,11 @@
-import { GraphQLID } from 'graphql';
+import { GraphQLID, GraphQLList } from 'graphql';
 import { PostType } from '../Types'
 
 import { Post } from '../../models'
 
 const PostMutation = {
 	posts: {
-		type: PostType,
+		type: new GraphQLList(PostType),
 		async resolve() {
 			return await Post.find({})
 		}
