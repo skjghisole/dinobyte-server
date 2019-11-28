@@ -4,10 +4,12 @@ import {
 
 import {
 	UserQueries,
+	PostQueries
 } from './'
 
 const fields = {
 	...UserQueries,
+	...PostQueries
 }
 
 const QueryType = new GraphQLObjectType({
