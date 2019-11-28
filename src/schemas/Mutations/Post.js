@@ -59,6 +59,8 @@ const PostMutation = {
 				const { id, ...rest } = args; 
 				if (authError) {
 					throw new Error(authError)
+				} else if (user.role  !== ADMIN_ROLE) {
+					throw new Error(UNAUTHORIZED_ERROR_MESSAGE)
 				} else {
 					return await Post.findByIdAndUpdate({ _id: id }, rest)
 				}
