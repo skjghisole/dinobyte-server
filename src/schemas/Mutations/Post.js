@@ -1,5 +1,7 @@
 import { GraphQLString, GraphQLID, GraphQLList } from 'graphql'
 
+import { ERROR_MESSAGES, ADMIN_ROLE } from '../../constants'
+
 import {
 	InputImageType,
 	PostType
@@ -8,6 +10,8 @@ import {
 import {
 	Post
 } from '../../models'
+
+const { UNAUTHORIZED_ERROR_MESSAGE } = ERROR_MESSAGES;
 
 const PostMutation = {
 	addPost: {
@@ -24,6 +28,8 @@ const PostMutation = {
 			try {
 				if (authError) {
 					throw new Error(authError)
+				} else if (user.role !== ADMIN_ROLE ) {
+					throw new Error(UNAUTHORIZED_ERROR_MESSAGE)
 				} else {
 					const newPost = new Post({ ...args, contentCreatorId: user.id })
 					const savedPost = await newPost.save()
