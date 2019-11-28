@@ -48,9 +48,17 @@ const PostMutation = {
 				type: GraphQLID
 			}
 		},
-		async resolve(parent, args) {
-			const { id, ...rest } = args; 
-			return await Post.findByIdAndUpdate({ _id: id }, rest)
+		async resolve(parent, args, { req: { user, authError } }) {
+			try {
+				const { id, ...rest } = args; 
+				if (authError) {
+					throw new Error(authError)
+				} else {
+					return await Post.findByIdAndUpdate({ _id: id }, rest)
+				}
+			} catch (e) {
+				return e
+			}
 		}
 	}
 }
