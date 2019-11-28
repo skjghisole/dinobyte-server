@@ -1,4 +1,4 @@
-import { GraphQLString, GraphQLID } from 'graphql'
+import { GraphQLString, GraphQLID, GraphQLList } from 'graphql'
 
 import {
 	InputImageType,
@@ -20,7 +20,7 @@ const PostMutation = {
 				type: GraphQLID
 			},
 			images: {
-				type: InputImageType
+				type: new GraphQLList(InputImageType)
 			}
 		},
 		async resolve(parent, args) {
@@ -31,6 +31,24 @@ const PostMutation = {
 			} catch (e) {
 				return e
 			}
+		}
+	},
+	updatePost: {
+		type: PostType,
+		args: {
+			content: {
+				type: GraphQLString
+			},
+			images: {
+				type: new GraphQLList(InputImageType)
+			},
+			id: {
+				type: GraphQLID
+			}
+		},
+		async resolve(parent, args) {
+			const { id, ...rest } = args; 
+			return await Post.findByIdAndUpdate({ _id: id }, rest)
 		}
 	}
 }
