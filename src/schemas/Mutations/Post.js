@@ -16,18 +16,20 @@ const PostMutation = {
 			content: {
 				type: GraphQLString
 			},
-			contentCreatorId: {
-				type: GraphQLID
-			},
 			images: {
 				type: new GraphQLList(InputImageType)
 			}
 		},
-		async resolve(parent, args) {
+		async resolve(parent, args, { req: { user, authError } }) {
 			try {
-				const newPost = new Post(args)
-				const savedPost = await newPost.save()
-				return savedPost;
+				if (authError) {
+					throw new Error(authError)
+				} else {
+					const newPost = new Post({ ...args, contentCreatorId: user.id })
+					const savedPost = await newPost.save()
+					return savedPost;
+				}
+
 			} catch (e) {
 				return e
 			}
