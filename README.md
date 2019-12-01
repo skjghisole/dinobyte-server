@@ -1,8 +1,6 @@
-# nodejs-graphql-with-authentication-server-boilerplate
-This repository is a boilerplate for server creation 🔥
+# Dinobyte blog server
 
-
-Welcome to Skjghisole's Server Creation boilerplate 🚀
+Welcome to DinoBytes blog server which was pulled out from Skjghisole's Server Creation Boilerplate 🚀
 
 
 ## What's inside? 🤔
@@ -23,8 +21,8 @@ Welcome to Skjghisole's Server Creation boilerplate 🚀
 
 1. first clone the repo with the following command
     ```shell
-      git clone https://github.com/skjghisole/nodejs-graphql-with-authentication-server-boilerplate.git
-      cd nodejs-graphql-with-authentication-server-boilerplate
+      git clone https://github.com/skjghisole/dinobyte-server.git
+      cd dinobyte-server
     ```
 2. install Packages
     ```shell
